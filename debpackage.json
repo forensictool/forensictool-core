@@ -1,0 +1,16 @@
+{
+	
+	"repository": "https://github.com/tusur-coex/coex-core.git",
+	"maintainer": {
+		"name": "Evgenii Sopov",
+		"email": "mrseakg@gmail.com"
+	},
+	"build" : [
+		{
+			"type": "app"
+			"description": "The application console coex client",
+			"name": "coex-cli",
+			"project": "app.pro"
+		}
+	]
+}
