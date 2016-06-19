@@ -6,9 +6,9 @@
 	},
 	"developers": [
 		"Evgenii Sopov <mrseakg@gmail.com>",
-		"Dmitry Nikiforov <?>",
-		"Marina Meyta <?>",
-		"Igor Polyakov <?>"
+		"Dmitry Nikiforov <nds@keva.tusur.ru>",
+		"Marina Meyta <somekindofcookiemonster@gmail.com>",
+		"Igor Polyakov <fox.user.3@gmail.com>"
 	],
 	"build" : [
 		{
