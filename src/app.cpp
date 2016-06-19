@@ -34,18 +34,27 @@ int main(int argc, char* argv[])
 	Config *pConfig = new Config();
 	pConfig->setParameters(args);
 
+
+	if(args.contains("-p") && args.indexOf("-p") + 1 < args.size()){
+		QString p = args[args.indexOf("-p") + 1];
+		QStringList paths = p.split(";");
+		for(int i = 0; i < paths.size(); i++){
+			pCore->loadPluginsByPath(paths[i]);
+		}
+	}
+	
 	if(args.contains("-l")){
 		std::cout << "\n";
 		std::cout << "DETECTORS:\n";
 		QVector<coex::IDetectorOperationSystem *> detectors = pCore->detectors();
 		for(int i = 0; i < detectors.size(); i++){
-			std::cout << detectors[i]->name().toStdString() << "\n";
+			std::cout << " * " << detectors[i]->name().toStdString() << "\n";
 		}
 		
 		std::cout << "TASKS:\n";
 		QVector<coex::ITask *> tasks = pCore->tasks();
 		for(int i = 0; i < tasks.size(); i++){
-			std::cout << tasks[i]->name().toStdString() << "\n";
+			std::cout << " * " << tasks[i]->name().toStdString() << "\n";
 		}
 		return 0;
 	}
@@ -72,14 +81,6 @@ int main(int argc, char* argv[])
 	QString outputFolder = QDir::home().absolutePath() + "/coex.output";
 	if(args.contains("-o") && args.indexOf("-o") + 1 < args.size()){
 		outputFolder = args[args.indexOf("-o") + 1];
-	}
-
-	if(args.contains("-p") && args.indexOf("-p") + 1 < args.size()){
-		QString p = args[args.indexOf("-p") + 1];
-		QStringList paths = p.split(";");
-		for(int i = 0; i < paths.size(); i++){
-			pCore->loadPluginsByPath(paths[i]);
-		}
 	}
 	
 	pConfig->setOutputFolder(outputFolder);    

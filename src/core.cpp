@@ -75,11 +75,11 @@ bool Core::loadPlugin(const QString &fullpathToPlugin){
     typedef coex::ITask* (*funcCreateTask) ();
     
 	// try load detect operation system
-	funcCreateDetectorOperationSystem createDetect = (funcCreateDetectorOperationSystem)(plugin->resolve("createDetectOperationSystem"));
-	if(createDetect)
+	funcCreateDetectorOperationSystem createDetector = (funcCreateDetectorOperationSystem)(plugin->resolve("createDetectorOperationSystem"));
+	if(createDetector)
 	{
 		bIsPlugin = true;
-		coex::IDetectorOperationSystem* detect = createDetect();
+		coex::IDetectorOperationSystem* detect = createDetector();
 		// std::cout << "OK \n ----> Found detector '" << detect->name().toStdString() << "' by '" << detect->author().toStdString() << "' ";
 		m_vDetectors.push_back(detect);
 	}
