@@ -4,12 +4,21 @@
 		"name": "Evgenii Sopov",
 		"email": "mrseakg@gmail.com"
 	},
+	"developers": [
+		"Evgenii Sopov <mrseakg@gmail.com>",
+		"Dmitry Nikiforov <?>",
+		"Marina Meyta <?>",
+		"Igor Polyakov <?>"
+	],
 	"build" : [
 		{
 			"type" : "app",
 			"description" : "The application console coex-core client",
 			"name" : "coex-cli",
-			"project" : "app.pro"
+			"project" : "app.pro",
+			"depends" : [
+				"libc6"
+			]
 		}
 	]
 }
