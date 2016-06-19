@@ -10,6 +10,8 @@ INCLUDEPATH += src/interfaces/
 
 SOURCES += \
 	src/helpers/config.cpp \
+	src/helpers/typeos.cpp \
+	src/helpers/typeos_ubuntu.cpp \
 	src/taskrunner.cpp \
 	src/core.cpp \
 	src/app.cpp \
@@ -17,6 +19,8 @@ SOURCES += \
 
 HEADERS += \
 	src/helpers/config.h \
+	src/helpers/typeos.h \
+	src/helpers/typeos_ubuntu.h \
 	src/taskrunner.h \
 	src/core.h \
 
