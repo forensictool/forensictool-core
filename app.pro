@@ -1,7 +1,7 @@
 include(version.pri)
 
 TEMPLATE = app
-TARGET = coex-cli
+TARGET = forensictool-cli
 DESTDIR = bin/
 OBJECTS_DIR = tmp/
 QT -= gui

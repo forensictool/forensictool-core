@@ -1,16 +1,16 @@
-#ifndef __COEX_TASKRUNNER_H__
-#define __COEX_TASKRUNNER_H__
+#ifndef __FORENSICTOOL_TASKRUNNER_H__
+#define __FORENSICTOOL_TASKRUNNER_H__
 
-#include "coex.h"
+#include "forensictool.h"
 #include <QRunnable>
 
 class TaskRunner : public QRunnable {
 	public:
-		TaskRunner(coex::ITask *pTask);
+		TaskRunner(forensictool::ITask *pTask);
 		virtual void run();
 	private:
-		coex::ITask *m_pTask;
+		forensictool::ITask *m_pTask;
 };
 
 
-#endif // __COEX_TASKRUNNER_H__
+#endif // __FORENSICTOOL_TASKRUNNER_H__

@@ -1,4 +1,4 @@
-# сoex-core
+# forensictool-core
 
 The software for computer forensics within the framework of judicial proceedings, and designed to facilitate the collection of information on the suspect computer.
 
@@ -9,22 +9,22 @@ The software for computer forensics within the framework of judicial proceedings
 
 ## Run single app:
 
-	$ ./bin/coex-cli -i ../coex-testdata/Windows7_Ult/ -o ~/coex.output
+	$ ./bin/forensictool-cli -i ../forensictool-testdata/Windows7_Ult/ -o ~/forensictool.output
 
 	The software for computer forensics within the framework of judicial proceedings, and designed to facilitate the collection of information on the suspect computer.
 
-	  Usage: ./bin/coex-cli [OPTIONS] 
+	  Usage: ./bin/forensictool-cli [OPTIONS] 
 
 	  OPTIONS:
 
 		-i <path>           - Input folder, required parameter
-		-o <path>           - Output folder, optional parameter (default: {homefolder}/coex.output )
+		-o <path>           - Output folder, optional parameter (default: {homefolder}/forensictool.output )
 		-l                  - List of plugins, optional parameter
 		-p <path1;path2>    - Plugins path, optional parameter
 		-h/--help           - this help
 
 	  EXAMPLE USAGE:
 
-		$ ./bin/coex-cli -i ~/copywinhard1/ -o ~/copywinhard1.coex/ 
+		$ ./bin/forensictool-cli -i ~/copywinhard1/ -o ~/copywinhard1.forensictool/
 
 	  VERSION: 0.2.0

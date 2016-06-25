@@ -22,7 +22,7 @@ QString Core::pathToPluginsSystem(){
 	#elif defined(Q_OS_IOS)
 		path = "/usr/lib";
 	#elif defined(Q_OS_WIN32)
-		path = "/C/Program Files/coex/plugins/"; // TODO: check it
+		path = "/C/Program Files/forensictool/plugins/"; // TODO: check it
 	#endif
 	
 	return path;
@@ -31,14 +31,14 @@ QString Core::pathToPluginsSystem(){
 // ---------------------------------------------------------------------
 
 QString Core::filter(){
-	QString filter = "libcoex-plugin-*";
+	QString filter = "libforensictool-plugin-*";
 	
 	#ifdef Q_OS_LINUX
-		filter = "libcoex-plugin-*.so." + QString::number(VERSION_MAJOR) + "." + QString::number(VERSION_MINOR) + ".*";
+		filter = "libforensictool-plugin-*.so." + QString::number(VERSION_MAJOR) + "." + QString::number(VERSION_MINOR) + ".*";
 	#elif defined(Q_OS_IOS)
-		filter = "libcoex-plugin-*.so." + QString::number(VERSION_MAJOR) + "." + QString::number(VERSION_MINOR) + ".*";
+		filter = "libforensictool-plugin-*.so." + QString::number(VERSION_MAJOR) + "." + QString::number(VERSION_MINOR) + ".*";
 	#elif defined(Q_OS_WIN32)
-		filter = "libcoex-plugin-*-" + QString::number(VERSION_MAJOR) + "." + QString::number(VERSION_MINOR) + "-*.dll";
+		filter = "libforensictool-plugin-*-" + QString::number(VERSION_MAJOR) + "." + QString::number(VERSION_MINOR) + "-*.dll";
 	#endif
 	
 	return filter;
@@ -71,15 +71,15 @@ bool Core::loadPlugin(const QString &fullpathToPlugin){
 	QLibrary *plugin = new QLibrary(fullpathToPlugin);
 	bool bIsPlugin = false;
 	
-	typedef coex::IDetectorOperationSystem* (*funcCreateDetectorOperationSystem) ();
-    typedef coex::ITask* (*funcCreateTask) ();
+	typedef forensictool::IDetectorOperationSystem* (*funcCreateDetectorOperationSystem) ();
+    typedef forensictool::ITask* (*funcCreateTask) ();
     
 	// try load detect operation system
 	funcCreateDetectorOperationSystem createDetector = (funcCreateDetectorOperationSystem)(plugin->resolve("createDetectorOperationSystem"));
 	if(createDetector)
 	{
 		bIsPlugin = true;
-		coex::IDetectorOperationSystem* detect = createDetector();
+		forensictool::IDetectorOperationSystem* detect = createDetector();
 		// std::cout << "OK \n ----> Found detector '" << detect->name().toStdString() << "' by '" << detect->author().toStdString() << "' ";
 		m_vDetectors.push_back(detect);
 	}
@@ -89,7 +89,7 @@ bool Core::loadPlugin(const QString &fullpathToPlugin){
 	if(createTask)
 	{
 		bIsPlugin = true;
-		coex::ITask* task = createTask();
+		forensictool::ITask* task = createTask();
 		// std::cout << "OK \n ----> Found threadTask '" << task->name().toStdString() << "' by '" << task->author().toStdString() << "' ";
 		m_vTasks.push_back(task);
 	}
@@ -105,13 +105,13 @@ bool Core::loadPlugin(const QString &fullpathToPlugin){
 
 // ---------------------------------------------------------------------
 
-QVector<coex::ITask *> &Core::tasks(){
+QVector<forensictool::ITask *> &Core::tasks(){
 	return m_vTasks;
 }
 
 // ---------------------------------------------------------------------
 
-QVector<coex::IDetectorOperationSystem *> &Core::detectors(){
+QVector<forensictool::IDetectorOperationSystem *> &Core::detectors(){
 	return m_vDetectors;
 }
 
@@ -123,15 +123,15 @@ void Core::setMaxThreads(int nMaxThreads){
 
 // ---------------------------------------------------------------------
 
-void Core::run(coex::IConfig *pConfig){
+void Core::run(forensictool::IConfig *pConfig){
 
 	// config->
 	// detect operation system
     std::cout << " > Detectiong operation system . . . \n";
 	
-	coex::ITypeOperationSystem* typeOS = NULL;
+	forensictool::ITypeOperationSystem* typeOS = NULL;
 	for (int i = 0; i < m_vDetectors.size(); i++) {
-		coex::ITypeOperationSystem* tmpTypeOS = m_vDetectors[i]->detect(pConfig->inputFolder());
+		forensictool::ITypeOperationSystem* tmpTypeOS = m_vDetectors[i]->detect(pConfig->inputFolder());
 		if (tmpTypeOS != NULL && typeOS != NULL) {
 			std::cerr << "ERROR: found ambiguity\n";
 			return;

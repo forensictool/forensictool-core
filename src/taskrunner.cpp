@@ -2,7 +2,7 @@
 #include <QThread>
 #include <iostream>
 
-TaskRunner::TaskRunner(coex::ITask *pTask){
+TaskRunner::TaskRunner(forensictool::ITask *pTask){
 	m_pTask = pTask;
 }
 

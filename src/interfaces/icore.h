@@ -1,9 +1,8 @@
-#ifndef __COEX_INTERFACES_ICORE_H__
-#define __COEX_INTERFACES_ICORE_H__
+#ifndef __FORENSICTOOL_INTERFACES_ICORE_H__
+#define __FORENSICTOOL_INTERFACES_ICORE_H__
 
-namespace coex
+namespace forensictool
 {
-
 	// interface of running tasks
 	class ICore
 	{
@@ -11,12 +10,12 @@ namespace coex
 			virtual void loadPluginsByPath(const QString &fullpathToFolder) = 0;
 			virtual void loadPluginsFromSystem() = 0;
 			virtual bool loadPlugin(const QString &fullpathToPlugin) = 0;
-			virtual QVector<coex::ITask *> &tasks() = 0;
-			virtual QVector<coex::IDetectorOperationSystem *> &detectors() = 0;
+			virtual QVector<forensictool::ITask *> &tasks() = 0;
+			virtual QVector<forensictool::IDetectorOperationSystem *> &detectors() = 0;
 			virtual void setMaxThreads(int nMaxThreads) = 0;
-			virtual void run(coex::IConfig *pConfig) = 0;
+			virtual void run(forensictool::IConfig *pConfig) = 0;
 	};
 }
 
 
-#endif //__COEX_INTERFACES_ICORE_H__
+#endif //__FORENSICTOOL_INTERFACES_ICORE_H__

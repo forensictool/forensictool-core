@@ -1,5 +1,5 @@
 {
-	"repository": "https://github.com/tusur-coex/coex-core.git",
+	"repository": "https://github.com/forensictool/forensictool-core.git",
 	"maintainer": {
 		"name": "Evgenii Sopov",
 		"email": "mrseakg@gmail.com"
@@ -13,8 +13,8 @@
 	"build" : [
 		{
 			"type" : "app",
-			"description" : "The application console coex-core client",
-			"name" : "coex-cli",
+			"description" : "The application console forensictool",
+			"name" : "forensictool-cli",
 			"project" : "app.pro",
 			"depends" : [
 				"libc6"

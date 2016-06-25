@@ -9,13 +9,13 @@ void printHelp(QStringList &args){
 	std::cout << "  Usage: " << args[0].toStdString() << " [OPTIONS] \n\n";
 	std::cout << "  OPTIONS:\n\n";
 	std::cout << "    -i <path>           - Input folder, required parameter\n";
-	std::cout << "    -o <path>           - Output folder, optional parameter (default: {homefolder}/coex.output )\n";
+	std::cout << "    -o <path>           - Output folder, optional parameter (default: {homefolder}/forensictool.output )\n";
 	std::cout << "    -l                  - List of plugins, optional parameter\n";
 	std::cout << "    -p <path1;path2>    - Plugins path, optional parameter\n";
 	std::cout << "    -h/--help           - this help\n";
 	std::cout << "\n";
 	std::cout << "  EXAMPLE USAGE:\n\n";
-	std::cout << "    $ " << args[0].toStdString() << " -i ~/copywinhard1/ -o ~/copywinhard1.coex/ \n";
+	std::cout << "    $ " << args[0].toStdString() << " -i ~/copywinhard1/ -o ~/copywinhard1.forensictool/ \n";
 	std::cout << "\n";
 	std::cout << "  VERSION: " << VERSION_MAJOR << "." << VERSION_MINOR << "." << VERSION_BUILD << "\n";
 	std::cout << "\n";
@@ -46,13 +46,13 @@ int main(int argc, char* argv[])
 	if(args.contains("-l")){
 		std::cout << "\n";
 		std::cout << "DETECTORS:\n";
-		QVector<coex::IDetectorOperationSystem *> detectors = pCore->detectors();
+		QVector<forensictool::IDetectorOperationSystem *> detectors = pCore->detectors();
 		for(int i = 0; i < detectors.size(); i++){
 			std::cout << " * " << detectors[i]->name().toStdString() << "\n";
 		}
 		
 		std::cout << "TASKS:\n";
-		QVector<coex::ITask *> tasks = pCore->tasks();
+		QVector<forensictool::ITask *> tasks = pCore->tasks();
 		for(int i = 0; i < tasks.size(); i++){
 			std::cout << " * " << tasks[i]->name().toStdString() << "\n";
 		}
@@ -78,7 +78,7 @@ int main(int argc, char* argv[])
 		pConfig->setInputFolder(args[args.indexOf("-i") + 1]);
 	}
 	
-	QString outputFolder = QDir::home().absolutePath() + "/coex.output";
+	QString outputFolder = QDir::home().absolutePath() + "/forensictool.output";
 	if(args.contains("-o") && args.indexOf("-o") + 1 < args.size()){
 		outputFolder = args[args.indexOf("-o") + 1];
 	}

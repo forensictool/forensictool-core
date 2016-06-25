@@ -29,3 +29,5 @@
 
 Makefile
 bin/*
+
+test.sh
