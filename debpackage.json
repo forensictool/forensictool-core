@@ -1,8 +1,8 @@
 {
 	"repository": "https://github.com/forensictool/forensictool-core.git",
 	"maintainer": {
-		"name": "Evgenii Sopov",
-		"email": "mrseakg@gmail.com"
+		"name": "ForensicTool",
+		"email": "contact@forensictool.su"
 	},
 	"developers": [
 		"Evgenii Sopov <mrseakg@gmail.com>",
